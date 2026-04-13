@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Món ngon mỗi ngày</title>
+</head>
+<body>
+
+<form th:object="${dailyDish}"
+      th:action="@{/daily/save}"
+      method="post"
+      enctype="multipart/form-data">
+
+  <label>Tên món:</label>
+  <input type="text" th:field="*{name}" />
+
+  <br>
+
+  <label>Danh mục:</label>
+  <select th:field="*{category}">
+    <option value="">--Chọn--</option>
+    <option th:each="c : ${categories}"
+            th:value="${c}"
+            th:text="${c}">
+    </option>
+  </select>
+
+  <br>
+
+  <label>Banner:</label>
+  <input type="file" name="bannerFile" />
+
+  <br><br>
+
+  <button type="submit">Lưu</button>
+
+</form>
+
+</body>
+</html>
